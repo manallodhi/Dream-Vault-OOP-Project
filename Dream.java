@@ -6,12 +6,18 @@ public class Dream {
 	
 	private String name;
     private String description;
-    private ArrayList<MicroGoal> microGoals;
+    private ArrayList<MicroGoal> microGoals = new ArrayList<>();
 
-    public Dream(String name, String description) {
+    public Dream() {
+
+    }
+    
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
-        this.microGoals = new ArrayList<>();
     }
 
     public String getName() {
@@ -26,10 +32,14 @@ public class Dream {
         microGoals.add(new MicroGoal(taskName));
     }
 
+    public int getMicroGoalCount() {
+        return microGoals.size();
+    }
+    
     public void completeMicroGoal(int index) {
         if (index >= 0 && index < microGoals.size()) {
             microGoals.get(index).complete();
-            System.out.println("Micro-goal marked as completed!");
+            
         } else {
             System.out.println("Invalid micro-goal index.");
         }
@@ -41,10 +51,11 @@ public class Dream {
             return;
         }
         for (int i = 0; i < microGoals.size(); i++) {
-            System.out.println(i + ": " + microGoals.get(i));
+            System.out.println((i + 1) + ": " + microGoals.get(i));
+
         }
     }
-
+    
     public int getProgress() {
         if (microGoals.isEmpty()) return 0;
 
@@ -54,4 +65,12 @@ public class Dream {
         }
         return (completedCount * 100) / microGoals.size();
     }
+
+
+public MicroGoal getMicroGoal(int index) {
+    if (index >= 0 && index < microGoals.size()) {
+        return microGoals.get(index);
+    }
+    return null;
+}
 }

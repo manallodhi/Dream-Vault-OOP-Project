@@ -1,5 +1,6 @@
 package dreamvault;
 
+
 public class MicroGoal {
 	
 	private String taskName;
@@ -11,6 +12,7 @@ public class MicroGoal {
         this.isCompleted = false;
     }
 
+    
     // Mark the task as completed
     public void complete() {
         this.isCompleted = true;
@@ -28,7 +30,7 @@ public class MicroGoal {
     // To display the task
     @Override
     public String toString() {
-        return (isCompleted ? "[✓] " : "[ ] ") + taskName;
+        return (isCompleted ? "[Done] " : "[Undone] ") + taskName;
     }
 
 }
